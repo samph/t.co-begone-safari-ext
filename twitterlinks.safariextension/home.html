@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Hello World</title>
+	<meta name="generator" content="myHTMLEdit | www.seamoreavenue.com" />
+	<script type="text/javascript" charset="utf-8">
+	function performCommand(event){
+		if(event.command === "doTheHello"){
+		safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("activateMyScript", "start");
+		}
+	}
+	function validateCommand(event){
+		if(event.command === "doTheHello"){
+			event.target.disabled = !event.target.browserWindow.activeTab.url;
+		}
+	}
+	safari.application.addEventListener("command", performCommand, true);
+	safari.application.addEventListener("validate", validateCommand, true);
+	</script>
+</head>
+<body>
+</body>
+</html>
