@@ -1,11 +1,12 @@
 TODO
 ======
 
-* Run automatically
-* Update on scroll
+* Update on scroll and/or new tweets update
 
 
 DONE
 =======
 * Resolve other shortened/metric grabbing redirect services to real url
 ** ow.ly bit.ly etc
+* Run automatically
+

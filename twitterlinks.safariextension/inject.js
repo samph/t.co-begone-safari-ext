@@ -13,8 +13,6 @@ function handleMessage(msgEvent){
 		var url = window.location.href;
 		if(containsTwitterDomain(url)){
 			console.log("long url is " + messageData[1] + " for " + messageData[0] );
-			//There is almost certainly a better way to do this.
-			//Going through every link again is madness.
 
 			var links = document.querySelectorAll("a[href=\""+messageData[0]+"\"]");
 			for(j =0; j<links.length; j++){
@@ -36,7 +34,6 @@ function startIt(){
 				if(links[i].href && links[i].title && startsWithHTTP(links[i].title) && startsWithHTTP(links[i].href)){
 					console.log("title - " + links[i].title + " href - " + links[i].href)
 					var domain = extractDomain(links[i].title);
-
 					if(shorteners.indexOf(domain)>0)	{
 						console.log("Supported shortener " + domain + " seen! " + links[i].title);
 						var requestUrl = "http://api.longurl.org/v2/expand?format=json&url=" + encodeURIComponent(links[i].title);
@@ -83,5 +80,10 @@ function extractDomain(url) {
 //not using full list supported by longurl.org yet.
 var shorteners = ["ow.ly", "bit.ly", "wp.me", "j.mp"];
 
+
+var url = window.location.href;
+if(containsTwitterDomain(url)){
+	startIt();
+}
 
 safari.self.addEventListener("message", handleMessage, false);
